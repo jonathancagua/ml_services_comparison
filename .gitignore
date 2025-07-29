@@ -1,2 +1,7 @@
 *.lock
 *.pkl
+rest_service/__pycache__
+graphql_service/__pycache__
+client/__pycache__
+client/ml_service_pb2_grpc.py
+client/ml_service_pb2.py

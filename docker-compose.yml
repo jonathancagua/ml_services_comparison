@@ -5,8 +5,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "50051:50051"
-    volumes:
-      - ./grpc_service:/app
+    #volumes:
+    #  - ./grpc_service:/app
     command: poetry run python main.py
 
   graphql_service:
