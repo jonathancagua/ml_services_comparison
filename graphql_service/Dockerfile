@@ -1,3 +1,4 @@
+# Dockerfile (para grpc_service, graphql_service, rest_service, client)
 FROM python:3.9-slim-buster
 
 WORKDIR /app
@@ -13,3 +14,4 @@ RUN poetry install --no-root
 
 # Copy the rest of the application code
 COPY . .
+

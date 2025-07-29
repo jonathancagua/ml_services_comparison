@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   grpc_service:
     build:
@@ -5,8 +7,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "50051:50051"
-    #volumes:
-    #  - ./grpc_service:/app
+    volumes:
+      - ./grpc_service:/app
     command: poetry run python main.py
 
   graphql_service:
@@ -35,4 +37,5 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./client:/app
-    # El comando para el cliente se ejecutará manualmente desde tu terminal local
+    # No es necesario un puerto si solo se usa para ejecutar scripts de prueba
+    # command: poetry run python client.py # Esto se ejecutará manualmente desde el notebook

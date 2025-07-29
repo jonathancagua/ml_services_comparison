@@ -10,8 +10,9 @@ python = ">=3.9,<3.12"
 grpcio = "^1.50.0"
 grpcio-tools = "^1.50.0"
 requests = "^2.30.0"
-httpx = "^0.24.0"
-numpy = "^1.23.0" # ¡Añadido!
+httpx = "^0.24.0" # Para el cliente GraphQL si se usa Async
+numpy = "^1.23.0" 
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

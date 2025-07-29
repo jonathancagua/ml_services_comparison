@@ -1,3 +1,4 @@
+# Dockerfile (para grpc_service, graphql_service, rest_service, client)
 FROM python:3.9-slim-buster
 
 WORKDIR /app
@@ -11,11 +12,10 @@ COPY pyproject.toml poetry.lock ./
 # Install dependencies using Poetry
 RUN poetry install --no-root
 
-# Copy the proto directory
-COPY proto ./proto/
-
-# Para gRPC, necesitamos generar el código proto dentro del contenedor
-RUN poetry run python -m grpc_tools.protoc -I./proto --python_out=. --grpc_python_out=. ./proto/ml_service.proto
-
 # Copy the rest of the application code
 COPY . .
+
+# Para gRPC, necesitamos generar el código proto dentro del contenedor
+# Esto es específico para grpc_service, se puede omitir en los demás
+
+RUN poetry run python -m grpc_tools.protoc -I./proto --python_out=. --grpc_python_out=. ./proto/ml_service.proto

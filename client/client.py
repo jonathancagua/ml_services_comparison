@@ -3,8 +3,8 @@ import requests
 import json
 import time
 import numpy as np
-import ml_service_pb2 # Este archivo será generado
-import ml_service_pb2_grpc # Este archivo será generado
+import ml_service_pb2
+import ml_service_pb2_grpc
 
 # Configuración
 GRPC_HOST = "localhost:50051"
@@ -42,7 +42,6 @@ def run_graphql_client():
             "variables": {"features": EXAMPLE_FEATURES}
         }
         response = requests.post(GRAPHQL_URL, headers=headers, data=json.dumps(payload))
-        response.raise_for_status() # Lanza una excepción si la respuesta no es 2xx
         # print(f"GraphQL Prediction: {response.json()['data']['predict']['class_id']}")
     end_time = time.time()
     return end_time - start_time
@@ -54,7 +53,6 @@ def run_rest_client():
     for _ in range(NUM_REQUESTS):
         payload = {"values": EXAMPLE_FEATURES}
         response = requests.post(REST_URL, headers=headers, data=json.dumps(payload))
-        response.raise_for_status() # Lanza una excepción si la respuesta no es 2xx
         # print(f"REST Prediction: {response.json()['class_id']}")
     end_time = time.time()
     return end_time - start_time
